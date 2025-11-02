@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a test page description for PageRelay extension testing">
+    <title>PageRelay Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #333;
+        }
+        .highlight {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>PageRelay Extension Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Test Instructions</h2>
+        <ol>
+            <li>Install the PageRelay extension</li>
+            <li>Click the extension icon and set backend URL to: <code>http://localhost:3000/api</code></li>
+            <li>Start the test server: <code>node test-server.js</code></li>
+            <li>Reload this page</li>
+            <li>Check the browser console for any errors</li>
+            <li>Check the test server console to see received data</li>
+            <li>If injectHtml is working, you should see a green box at the top of this page</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Expected Data Collection</h2>
+        <p>The extension should collect:</p>
+        <ul>
+            <li><strong>URL:</strong> Should match <code>window.location.href</code></li>
+            <li><strong>Title:</strong> "PageRelay Test Page"</li>
+            <li><strong>Meta Description:</strong> "This is a test page description for PageRelay extension testing"</li>
+            <li><strong>Selected Text:</strong> Empty (unless you select text before reload)</li>
+            <li><strong>HTML Snapshot:</strong> Full HTML of this page</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Content</h2>
+        <p>This page contains various elements to test the HTML snapshot collection.</p>
+        <p>Try selecting this text and reloading to test selectedText collection.</p>
+        <p><strong>Bold text</strong> and <em>italic text</em> for testing.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Form Test Area</h2>
+        <form>
+            <label>Test Input: <input type="text" placeholder="Test field"></label>
+            <button type="button">Test Button</button>
+        </form>
+    </div>
+</body>
+</html>
+

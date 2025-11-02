@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 400px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+    }
+    h1 {
+      margin: 0 0 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #0066cc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0052a3;
+    }
+    button:active {
+      background-color: #003d7a;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #28a745;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>PageRelay Settings</h1>
+  <form id="settingsForm">
+    <label for="backendUrl">Backend URL:</label>
+    <input type="url" id="backendUrl" name="backendUrl" placeholder="https://your-backend.com/api" required>
+    <button type="submit">Save</button>
+    <div id="status">Settings saved!</div>
+  </form>
+  <script src="popup.js"></script>
+</body>
+</html>
+
