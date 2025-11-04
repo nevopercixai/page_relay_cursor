@@ -9,13 +9,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 async function handlePageData(pageData, tabId) {
   try {
+    console.log('PageRelay [Background]: Received pageData:', pageData);
+    console.log('PageRelay [Background]: Data structure:', Object.keys(pageData));
+    
     // Read backend URL from storage
     const result = await chrome.storage.sync.get(['backendUrl']);
     
     if (!result.backendUrl) {
-      console.warn("No backend URL set");
+      console.warn("PageRelay [Background]: No backend URL set");
       return;
     }
+
+    console.log('PageRelay [Background]: Sending POST to:', result.backendUrl);
+    console.log('PageRelay [Background]: JSON payload:', JSON.stringify(pageData, null, 2));
 
     // POST pageData to backend
     const response = await fetch(result.backendUrl, {
@@ -27,12 +33,15 @@ async function handlePageData(pageData, tabId) {
     });
 
     if (!response.ok) {
-      console.error("Backend request failed:", response.status, response.statusText);
+      console.error("PageRelay [Background]: Backend request failed:", response.status, response.statusText);
       return;
     }
 
+    console.log('PageRelay [Background]: Backend responded with status:', response.status);
+
     // Parse response JSON
     const responseData = await response.json();
+    console.log('PageRelay [Background]: Backend response:', responseData);
     
     // If response contains injectHtml, send it back to content script
     if (responseData.injectHtml) {
