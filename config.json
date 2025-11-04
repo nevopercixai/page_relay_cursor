@@ -1,0 +1,37 @@
+{
+  "websites": [
+    {
+      "urlPattern": "file:///*",
+      "pages": [
+        {
+          "pathPattern": "*test.html",
+          "fields": [
+            {
+              "name": "title",
+              "selector": "title",
+              "type": "text"
+            },
+            {
+              "name": "metaDescription",
+              "selector": "meta[name='description']",
+              "type": "attribute",
+              "attribute": "content",
+              "default": ""
+            },
+            {
+              "name": "selectedText",
+              "selector": "special:getSelection",
+              "type": "text",
+              "default": ""
+            },
+            {
+              "name": "htmlSnapshot",
+              "selector": "html",
+              "type": "html"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

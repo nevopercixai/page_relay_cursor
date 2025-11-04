@@ -43,10 +43,19 @@ const server = http.createServer((req, res) => {
         const pageData = JSON.parse(body);
         
         console.log(`\n[Request #${requestCount}]`);
+        console.log('Full JSON received:');
+        console.log(JSON.stringify(pageData, null, 2));
+        console.log('\nField breakdown:');
         console.log('URL:', pageData.url);
-        console.log('Title:', pageData.title);
-        console.log('Meta Description:', pageData.metaDescription || '(empty)');
-        console.log('Selected Text:', pageData.selectedText || '(none)');
+        console.log('Timestamp:', pageData.timestamp);
+        
+        // Log all fields dynamically (since structure is now config-based)
+        Object.keys(pageData).forEach(key => {
+          if (key !== 'url' && key !== 'timestamp' && key !== 'htmlSnapshot') {
+            console.log(`${key}:`, pageData[key] || '(empty)');
+          }
+        });
+        
         console.log('HTML Snapshot Length:', pageData.htmlSnapshot?.length || 0, 'characters');
         
         // Save HTML snapshot to file
